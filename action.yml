@@ -1,0 +1,28 @@
+name: 'Run credo with reviewdog'
+description: '🐶 Run credo with reviewdog on pull requests to improve code review experience.'
+author: 'wesleimp (review-dog)'
+inputs:
+  github_token:
+    description: 'GITHUB_TOKEN'
+    required: true
+  credo_lint_flags:
+    description: 'credo flags.'
+    default: '--strict --format=flycheck'
+  level:
+    description: 'Report level for reviewdog [info,warning,error]'
+    default: 'error'
+  reporter:
+    description: 'Reporter of reviewdog command [github-pr-check,github-pr-review,github-check].'
+    default: 'github-pr-check'
+  tool_name:
+    description: 'Tool name to use for reviewdog reporter'
+    default: 'credo'
+  reviewdog_flags:
+    description: 'Additional reviewdog flags'
+    default: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'check-circle'
+  color: 'purple'
